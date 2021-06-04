@@ -4,6 +4,10 @@
     overflow: hidden;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.56);
     transition: all 1s linear;
+    height: 100%; /* 50% 20% 200px whatever you may */
+    position: fixed;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 .wrapper {
     height: 500px;

@@ -342,8 +342,22 @@
     .taskItem {
         width: 80%;
     }
+    .search-box {
+        height: 50px;
+    }
+    .search-btn {
+        padding: 23px;
+    }
     .search-box:hover > .search-input {
         width: 170px;
+    }
+    .search-btn:before {
+        left: inherit;
+        width: 25px;
+    }
+    .search-btn:after {
+        left: inherit;
+        width: 25px;
     }
     .taskinput {
         margin-bottom: 70px;

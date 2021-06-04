@@ -168,9 +168,8 @@
     font-size: 17px;
     border-radius: 5px;
     padding: 1px 10px;
+    -webkit-appearance: none;
 }
-
-
 
 
 

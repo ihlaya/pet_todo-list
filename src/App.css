@@ -326,10 +326,19 @@
         width: 100vw;
         background: linear-gradient(65deg, black 50%, rgba(255, 255, 255, 0) 50%);
     }
+    .title {
+        margin-top: 25px;
+    }
+    .showTasks {
+        margin-top: 125px;
+    }
     .showTasks button {
         font-size: 13px;
     }
     .search-box:hover > .search-input {
         width: 170px;
+    }
+    .taskinput {
+        margin-bottom: 70px;
     }
 }

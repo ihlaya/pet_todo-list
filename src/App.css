@@ -319,12 +319,12 @@
 @media (max-width: 540px) {
     .App {
         border-radius: 0;
-        background: linear-gradient(245deg, white 48%, #969696 50%);
+        background: linear-gradient(250deg, white 48%, #969696 50%);
     }
     .wrapper {
         height: 100vh;
         width: 100vw;
-        background: linear-gradient(65deg, black 50%, rgba(255, 255, 255, 0) 50%);
+        background: linear-gradient(70deg, black 50%, rgba(255, 255, 255, 0) 50%);
     }
     .title {
         margin-top: 35px;

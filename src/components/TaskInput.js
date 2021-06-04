@@ -8,6 +8,7 @@ const TaskInput = (props) => {
     }
 
     function addTasks() {
+        document.getElementById("myText").focus();
         props.addTask(input);
         setInput('')
     }
@@ -23,10 +24,11 @@ const TaskInput = (props) => {
             <p>Add</p>
             <input type="text" placeholder=" your new task"
                    onKeyDown={addTask} onChange={changeInput}
+                   autoFocus={true}
+                   id='myText'
                    value={input}
                    className="search-input"/>
-            <button onClick={addTasks} className="search-btn">
-                <i className="fas fa-search"/>
+            <button onClick={addTasks}  className="search-btn">
             </button>
         </div>
     )

@@ -1,6 +1,5 @@
 .App {
-    background: linear-gradient(225deg, white 48%, #969696 50%);
-    filter: blur(3px);
+    background: linear-gradient(225deg, white 49%, #969696 50%);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.56);
@@ -33,7 +32,7 @@
     width: 60%;
     padding-left: 30px;
     color: #000000;
-
+    font-size: 40px;
 }
 
 
@@ -57,35 +56,34 @@
 
 
 .showTasks button {
-    padding: 10px 20px;
+    padding: 5px 15px;
     min-width: 80px;
     margin: 0 5px;
     cursor: pointer;
 
-    border: none;
+    border: 2px solid white;
+    border-bottom: none;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 
     filter: invert(1) ;
     mix-blend-mode: difference;
-    /*box-shadow: 0 0 2px rgba(0, 0, 0, 0.59);*/
     color: white;
-    /*font-weight: bold;*/
 
-    background-color: #131313;
-    font-size: 17px;
-    font-weight: bold;
+    background-color: #080808;
+    font-size: 15px;
+    /*font-weight: bold;*/
 }
-.showTasks .doneTask {
-    color: #b27fba;
-}
-.showTasks .active {
-    color: #ea9887;
-}
-.showTasks .clear {
-    color: black;
-    background: linear-gradient(to bottom, #19a1a5, #63ffe1);
-}
+/*.showTasks .doneTask {*/
+/*    color: #b27fba;*/
+/*}*/
+/*.showTasks .active {*/
+/*    color: #ea9887;*/
+/*}*/
+/*.showTasks .clear {*/
+/*    color: black;*/
+/*    background: linear-gradient(to bottom, #2af9ff, #82ffe7);*/
+/*}*/
 .showTasks button:hover {
     transform: translateY(5px);
 }
@@ -122,13 +120,12 @@
     border-radius: 10px;
 }
 
-
 .diagram {
     height: 80px;
     width: 80px;
     margin: 0 30px 0 auto;
     border-radius: 50%;
-    box-shadow: 1px 1px 10px black;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.50);
 }
 
 .tasksList {
@@ -147,10 +144,36 @@
     align-items: center;
     color: white;
 }
+.complete {
+    box-shadow: inset 0 0 5px black;
+    background-color: rgba(224, 224, 224, 0.1);
+    border: none;
+    border-bottom: 1px solid silver;
+
+}
+
+.complete p {
+    color: #6b6b6b;
+    text-decoration: line-through;
+}
 .tasksTitle {
     font-size: 17px;
     overflow-x: hidden;
 }
+.input {
+    width: 80%;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 1px 10px;
+}
+
+
+
+
+
+
 
 /*status*/
 
@@ -163,7 +186,7 @@
     cursor: pointer;
 }
 .deleteTask {
-    color: #01cfc8 !important;
+    color: #05d9d2 !important;
     cursor: pointer;
     margin: auto;
 }
@@ -176,16 +199,6 @@
 .notDone {
     color: #bf0000 !important;
 }
-.complete {
-    box-shadow: inset 0 0 5px black;
-    background-color: rgba(224, 224, 224, 0.1);
-    border: none;
-}
-
-.complete p {
-    color: #6b6b6b;
-    text-decoration: line-through;
-}
 
 .edit {
     margin-left: auto;
@@ -196,6 +209,11 @@
 .edit:hover {
     color: #a7a7a7;
 }
+
+
+
+
+
 
 /* footer*/
 
@@ -212,18 +230,18 @@
     left: 50%;
     transform: translate(-50%,-50%);
     height: 36px;
-    background: #353535;
+    background: #ffffff;
     line-height:40px;
-    padding: 7px;
+    padding: 0 0 0 10px;
     border-radius: 60px;
-    color: white;
+    color: black;
 
     display: flex;
     align-items: center;
 }
 .search-input{
-    background: #353535;
-    color: #fff;
+    background: #ffffff;
+    color: #000000;
     outline: none;
     border: none;
     line-height:24px;
@@ -238,12 +256,12 @@
     justify-content: center;
     align-items: center;
     text-decoration:none;
-    background: #353535;
-    padding: 18px;
+    background: #000000;
+    padding: 17px;
+    margin-left: 10px;
     border-radius: 50%;
-    border: none;
+    border: 1px solid silver;
     float: right;
-    color: #ff5722;
     transition: 0.4s ease;
     position: relative;
 }
@@ -278,19 +296,36 @@
 }
 .search-box:hover > .search-btn{
     background: #fff;
+    border: 1px solid white;
 }
 .search-box:hover > .search-btn:after{
-    background: #353535;
+    background: #000000;
 }
 .search-box:hover > .search-btn:before{
-    background: #353535;
+    background: #000;
 }
 .search-input:focus + .search-btn:after{
-    background: #353535;
+    background: #000;
 }
 .search-input:focus + .search-btn:before{
-    background: #353535;
+    background: #000;
 }
 .search-input:focus + .search-btn{
     background: #fff;
+    border: 1px solid white;
+}
+
+@media (max-width: 540px) {
+    .App {
+        border-radius: 0;
+        background: linear-gradient(245deg, white 48%, #969696 50%);
+    }
+    .wrapper {
+        height: 100vh;
+        width: 100vw;
+        background: linear-gradient(65deg, black 50%, rgba(255, 255, 255, 0) 50%);
+    }
+    .showTasks button {
+        font-size: 13px;
+    }
 }

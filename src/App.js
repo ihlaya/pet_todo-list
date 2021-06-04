@@ -106,7 +106,6 @@ function App() {
     };
 
     useEffect(() => {
-        document.querySelector('.App').style.filter = 'blur(0)';
         if (localStorage.getItem('todo')) {
             let newTasks = JSON.parse(localStorage.getItem('todo'));
             setter(newTasks)
@@ -122,10 +121,10 @@ function App() {
                     </div>
                 </div>
             <div className='showTasks'>
-                <button className='all' onClick={() => {show(allTask)}}>All</button>
-                <button className='doneTask' onClick={() => {show(doneTasks)}}>Done</button>
-                <button className='active' onClick={() => {show(activeTasks)}}>Active</button>
-                <button className='clear' onClick={() => {clear()}}>Clear</button>
+                <button className='all' onClick={() => {show(allTask)}}>All tasks</button>
+                <button className='doneTask' onClick={() => {show(doneTasks)}}>Done tasks</button>
+                <button className='active' onClick={() => {show(activeTasks)}}>Active tasks</button>
+                <button className='clear' onClick={() => {clear()}}>Clear list</button>
             </div>
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Droppable droppableId='tasksContent' >

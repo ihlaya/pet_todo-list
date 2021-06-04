@@ -327,10 +327,11 @@
         background: linear-gradient(65deg, black 50%, rgba(255, 255, 255, 0) 50%);
     }
     .title {
-        margin-top: 25px;
+        margin-top: 35px;
     }
     .showTasks {
-        margin-top: 125px;
+        margin-top: 135px;
+        height: 70px;
     }
     .showTasks button {
         font-size: 13px;

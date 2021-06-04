@@ -336,6 +336,12 @@
     .showTasks button {
         font-size: 13px;
     }
+    .tasksList {
+        padding: 5px 20px 5px 15px;
+    }
+    .taskItem {
+        width: 80%;
+    }
     .search-box:hover > .search-input {
         width: 170px;
     }

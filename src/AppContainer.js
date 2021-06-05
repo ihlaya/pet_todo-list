@@ -93,8 +93,8 @@ function AppContainer() {
         ua:{
             title: 'Мій список задач',
             all: 'Всі задачі',
-            done: 'Виконані',
-            active: 'Активні',
+            done: 'Виконані задачі',
+            active: 'Активні задачі',
             clear : 'Очистити список',
             prevBtn: 'Додай',
             placeholder: 'cвою нову задачу'

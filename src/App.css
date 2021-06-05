@@ -338,8 +338,14 @@
     .title {
         margin-top: 35px;
     }
+    .title h2 {
+        width: 32%;
+    }
+    .diagram {
+        margin: 0;
+    }
     .showTasks {
-        margin-top: 135px;
+        margin-top: 145px;
         height: 75px;
     }
     .showTasks button {

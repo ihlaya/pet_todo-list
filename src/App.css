@@ -36,6 +36,16 @@
     font-size: 40px;
 }
 
+.changeLang {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+}
+.changeLang span {
+    margin: 0;
+    cursor: pointer;
+}
+
 
 
 /*BUTTONS*/
@@ -202,10 +212,9 @@
 }
 
 .edit {
-    margin-left: auto;
+    margin: auto;
     cursor: pointer;
     color: white;
-    text-align: center;
 }
 .edit:hover {
     color: #a7a7a7;

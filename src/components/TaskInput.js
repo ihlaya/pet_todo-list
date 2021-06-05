@@ -21,8 +21,8 @@ const TaskInput = (props) => {
 
     return (
         <div className="search-box">
-            <p>Add</p>
-            <input type="text" placeholder=" your new task"
+            <p>{props.prev}</p>
+            <input type="text" placeholder={props.placeHolder}
                    onKeyDown={addTask} onChange={changeInput}
                    autoFocus={true}
                    id='myText'

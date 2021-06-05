@@ -1,137 +1,39 @@
 import './App.css';
-import React, {useEffect, useState} from "react";
+import './assets/flags.css';
 import Tasks from "./components/Tasks";
 import TaskInput from "./components/TaskInput";
 import {Pie} from 'react-chartjs-2';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
+import React from "react";
 
 
-function App() {
-    let [allTask, setAllTasks] = useState([])
-    let [tasks, setTasks] = useState([]);
-    let [characters, updateCharacters] = useState([]);
+function App(props) {
 
-    let doneTasks = allTask.filter(task => task.done);
-    let activeTasks = allTask.filter(task => !task.done);
-
-
-    let setter = (value) => {
-        value.sort(function(a,b){return a.done-b.done});
-        setTasks(value);
-        setAllTasks(value);
-        updateCharacters(value);
-    }
-    let show = (status) => {
-        updateCharacters(status)
-    }
-    let addTask = (value) => {
-        if (value !== '') {
-            let newTasks = [{
-                id: Date.now(),
-                title: value,
-                done: false,
-            }, ...tasks];
-            localStorage.setItem('todo', JSON.stringify(newTasks))
-            setter(newTasks)
-        }
-    }
-    let changeTask = (id, switcher, value) => {
-        let newTasks = [...tasks]
-        newTasks.forEach(function (item) {
-            if (item.id === id) {
-                switch (switcher) {
-                    case 'done':
-                        return item.done = !item.done;
-                    case 'title':
-                        return item.title = value
-                    case 'delete':
-                        const index = newTasks.map(function(e) { return e.id; }).indexOf(id);
-                        return newTasks.splice(index, 1);
-                    default:
-                        return null
-                }
-            }
-        })
-        localStorage.setItem('todo', JSON.stringify(newTasks));
-        setter([...newTasks]);
-    }
-    let doneToggler = (id) => {
-        changeTask(id, 'done')
-    }
-    let deleteTask = (id) => {
-        changeTask(id, 'delete')
-    }
-    let clear = () => {
-        setter([])
-        localStorage.clear()
-    }
-    let editTask = (id, value) => {
-        changeTask(id, 'title', value);
-    }
-
-    function handleOnDragEnd(result) {
-        if (!result.destination) return;
-        const items = Array.from(characters);
-        const [reorderedItem] = items.splice(result.source.index, 1);
-        items.splice(result.destination.index, 0, reorderedItem);
-
-        updateCharacters(items);
-    }
-
-    const data = {
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: false,
-                },
-            }
-        },
-        labels: ['Active', 'Done',],
-        datasets: [
-            {
-                data: [activeTasks.length, doneTasks.length],
-                backgroundColor: [
-                    'black',
-                    'white',
-
-                ],
-                borderColor: [
-                    'black',
-                    'white',
-                ],
-                borderWidth: 1,
-            },
-        ],
-    };
-
-    useEffect(() => {
-        if (localStorage.getItem('todo')) {
-            let newTasks = JSON.parse(localStorage.getItem('todo'));
-            setter(newTasks)
-        }
-    }, [])
     return (
         <div className="App">
             <div className="wrapper">
                 <div className='title'>
-                    <h2> <p>My ToDo-list : {tasks.length}</p></h2>
+                    <h2> <p>{props.langData.title} : {props.tasks.length}</p></h2>
                     <div className='diagram'>
-                        <Pie data={data} options={data.options}/>
+                        <Pie data={props.data} options={props.data.options}/>
+                    </div>
+                    <div className='changeLang'>
+                        <span onClick={() => {props.changeLang('ua')}}><i className="flag-UA"/></span>
+                        <span onClick={() => {props.changeLang('eng')}}><i className="flag-US"/></span>
                     </div>
                 </div>
             <div className='showTasks'>
-                <button className='all' onClick={() => {show(allTask)}}>All tasks</button>
-                <button className='doneTask' onClick={() => {show(doneTasks)}}>Done tasks</button>
-                <button className='active' onClick={() => {show(activeTasks)}}>Active tasks</button>
-                <button className='clear' onClick={() => {clear()}}>Clear list</button>
+                <button className='all' onClick={() => {props.show(props.allTask)}}>{props.langData.all}</button>
+                <button className='doneTask' onClick={() => {props.show(props.doneTasks)}}>{props.langData.done}</button>
+                <button className='active' onClick={() => {props.show(props.activeTasks)}}>{props.langData.active}</button>
+                <button className='clear' onClick={() => {props.clear()}}>{props.langData.clear}</button>
             </div>
-            <DragDropContext onDragEnd={handleOnDragEnd}>
+            <DragDropContext onDragEnd={props.handleOnDragEnd}>
                 <Droppable droppableId='tasksContent' >
                     {(provided) => (
                         <div className="tasksContent" {...provided.droppableProps}
                              ref={provided.innerRef}>
-                            {characters.map((task, index) => (
+                            {props.characters.map((task, index) => (
                                 <Draggable key={task.id} draggableId={`${task.id}`} index={index} >
                                     {(provided) => (
                                         <div {...provided.dragHandleProps}
@@ -139,9 +41,9 @@ function App() {
                                              {...provided.droppableProps}
                                              ref={provided.innerRef}>
                                             <Tasks tasks={task} key={task.id}
-                                                   doneTask={doneToggler}
-                                                   deleteTask={deleteTask}
-                                                   editTask={editTask}
+                                                   doneTask={props.doneToggler}
+                                                   deleteTask={props.deleteTask}
+                                                   editTask={props.editTask}
                                             />
                                         </div>
                                     )}
@@ -153,7 +55,7 @@ function App() {
                 </Droppable>
             </DragDropContext>
             <div className="taskinput">
-                <TaskInput addTask={addTask}/>
+                <TaskInput addTask={props.addTask} prev={props.langData.prevBtn} placeHolder={props.langData.placeholder}/>
             </div>
             </div>
         </div>

@@ -31,6 +31,7 @@ const Tasks = ({tasks, deleteTask, editTask, ...props}) => {
                              onBlur={modeToggler}
                     />
                 }
+
             </div>
             <span onClick={() => {
                 modeToggler()

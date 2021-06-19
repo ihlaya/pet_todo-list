@@ -91,7 +91,7 @@ function AppContainer() {
             placeholder: 'your new task'
         },
         ua:{
-            title: 'Мій список задач',
+            title: 'Мій список завдань',
             all: 'Всі задачі',
             done: 'Виконані задачі',
             active: 'Активні задачі',
